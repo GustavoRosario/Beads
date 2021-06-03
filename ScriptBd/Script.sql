@@ -16,7 +16,7 @@ activo bit default true,
 primary key(id_modelo)
 );
 
-create table bdsTipo(
+create table bdsTipoVehiculo(
 id_tipo integer not null AUTO_INCREMENT,
 descripcion_tipo varchar(70) not null,
 activo bit default true,
@@ -38,16 +38,68 @@ activo bit default true,
 primary key(id_moneda)
 );
 
+create table bdsTipoTransmision(
+id_transmision integer not null AUTO_INCREMENT,
+descripcion_transmision varchar(30) not null,
+activo bit default true,
+primary key(id_transmision)
+);
+
+create table bdsTipoCombustible(
+id_combustible integer not null AUTO_INCREMENT,
+descripcion_combustible varchar(20) not null,
+activo bit default true,
+primary key(id_combustible)
+);
+
+create table bdsTraccion(
+id_traccion integer not null AUTO_INCREMENT,
+descripcion_traccion varchar(20) not null,
+activo bit default true,
+primary key(id_traccion)
+);
+
+create table bdsColor(
+id_color integer not null AUTO_INCREMENT,
+descripcion_color varchar(10) not null,
+primary key(id_color)
+);
+
+create table bdsUso(
+id_uso integer not null AUTO_INCREMENT,
+descripcion_Uso varchar(10) not null,
+activo bit default true,
+primary key(id_uso)
+);
+
 /*===========================================================*/
 
 create table bdsVehiculo(
 id_vehiculo integer not null AUTO_INCREMENT,
 id_modelo integer not null,
+id_uso integer not null,
+id_color_exterior integer not null,
+id_color_interior integer not null,
+id_tipo integer not null,
+id_transmision integer not null,
+id_traccion integer not null,
+cilindraje  integer not null,
 año_vehiculo integer not null,
 precio_vehiculo integer not null,
-moneda_id int not null,
+pasajeros integer not null,
+puertas integer not null,
+moneda_id int default 1,
+observaciones varchar(500),
 activo bit default true,
 primary key(id_vehiculo)
+);
+
+create table bdsAccesorio(
+id_accesorios int not null AUTO_INCREMENT,
+descripcion_accesorio varchar(30) not null,
+id_vehiculo int not null,
+activo bit default true,
+primary key(id_accesorios)
 );
 
 create table bdsProvincia(
